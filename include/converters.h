@@ -1,3 +1,5 @@
+#ifndef MATH_CONVERTERS
+#define MATH_CONVERTERS
 #include "constants.h"
 #include <cmath>
 
@@ -16,3 +18,4 @@ class angleConverter {
         double degrees;
         double radians;
 }
+#endif
