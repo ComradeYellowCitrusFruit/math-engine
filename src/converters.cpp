@@ -6,6 +6,8 @@ class angleConverter {
         angle(double x, char RorD) {
             if(RorD == 'r' || RorD == 'R') {
                 radians = x;
+            } else if (RorD == 'd' || RorD == 'D') {
+                degrees = x;
             }
         }
         double toRad() {
@@ -19,6 +21,18 @@ class angleConverter {
         }
         double toDeg(double r) {
             return(radians * 180/PI)
+        }
+        void setDegrees(double x) {
+            degrees = x;
+        }
+        double getDegrees() {
+            return(degrees);
+        }
+        void setRadians(double x) {
+            radians = x;
+        }
+        double getRadians() {
+            return(radians);
         }
     private:
         double degrees;
