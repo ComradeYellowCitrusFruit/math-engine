@@ -1,2 +1,3 @@
-# math-engine
-A math engine for a future project of mine
+# The Math Engine Without a name
+A nameless math engine for a future project which is also currently nameless.
+Nothing else.
