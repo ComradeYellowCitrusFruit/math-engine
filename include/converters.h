@@ -8,6 +8,10 @@ class angleConverter {
         double toRad(double d);
         double toDeg();
         double toDeg(double r);
+        void setDegrees();
+        double getDegrees();
+        void setRadians();
+        double getRadians();
     private:
         double degrees;
         double radians;
