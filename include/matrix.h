@@ -5,9 +5,9 @@
 
 class matrix {
     public:
-        int length;
-        int height;
+        int row;
+        int column;
         float data[1][1];
-        matrix(int l, int h);
+        matrix(int r, int c);
 };
 #endif
