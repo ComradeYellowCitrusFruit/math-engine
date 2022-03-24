@@ -3,13 +3,13 @@
 
 class matrix {
     public:
-        int length;
-        int height;
+        int row;
+        int column;
         float data[1][1];
-        matrix(int l, int h) {
-            length = l;
-            height = h;
-            int* tempData = new int[length][height];
+        matrix(int r, int c) {
+            row = r;
+            column = c;
+            int* tempData = new int[row][column];
             delete[] data;
             data = tempData;
             tempData = nullptr;
