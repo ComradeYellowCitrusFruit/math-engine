@@ -3,6 +3,11 @@
 
 #include <cmath>
 
-// TODO: Learn this shit
-
+class matrix {
+    public:
+        int length;
+        int height;
+        float data[1][1];
+        matrix(int l, int h);
+};
 #endif
