@@ -1,40 +1,35 @@
 #include "constants.h"
 #include <cmath>
 
-class angleConverter {
-    public:
-        angle(double x, char RorD) {
-            if(RorD == 'r' || RorD == 'R') {
-                radians = x;
-            } else if (RorD == 'd' || RorD == 'D') {
-                degrees = x;
-            }
+double angleConverter(double x, char RorD) {
+    if(RorD == 'r' || RorD == 'R') {
+        return(x * 180/PI);
+    } else if(RorD == 'd' || RorD == 'D') {
+        return(x * PI/180);
+    } else {
+        return(0);
+    }
+}
+
+double temperature(double x, char type, char to) {
+    // This probably won't be necessary, but just in case
+    if(type == 'f' || type == 'F') {
+        if(to == 'c' || to == 'C') {
+            return((x - 32) * 5/9)
+        } else if(to == 'k' || to == 'K') {
+            return((x - 32) * 5/9 + 273.15)
         }
-        double toRad() {
-            return(degrees * PI/180);
+    } else if(type == 'c' || type == 'C') {
+        if(to == 'f' || to == 'F') {
+            return(x * 9/5 + 32)
+        } else if(to == 'k' || to == 'K') {
+            return(x + 273.15)
         }
-        double toRad(double d) {
-            return(d * PI/180);
+    } else if(type == 'k' || type == 'K') {
+        if(to == 'f' || to == 'F') {
+            return((x - 273.15) * 9/5 + 32)
+        } else if(to == 'c' || to == 'c') {
+            return(x - 273.15)
         }
-        double toDeg() {
-            return(radians * 180/PI)
-        }
-        double toDeg(double r) {
-            return(radians * 180/PI)
-        }
-        void setDegrees(double x) {
-            degrees = x;
-        }
-        double getDegrees() {
-            return(degrees);
-        }
-        void setRadians(double x) {
-            radians = x;
-        }
-        double getRadians() {
-            return(radians);
-        }
-    private:
-        double degrees;
-        double radians;
+    }
 }
