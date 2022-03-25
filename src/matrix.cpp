@@ -1,6 +1,7 @@
 #include "constants.h"
 #include "matrix.h"
 #include <cmath>
+#include <vector>
 
 class matrix {
     public:
@@ -91,11 +92,37 @@ class matrix {
             return(r);
         }
         matrix &multiply(matrix input) {
-            
+            if(column != input.row) {
+                matrix r(row, column);
+                r.data = data
+                return(r);
+            }
+            matrix r(column, input.row)
+            double a[row][column];
+            for(int i=0; i < row; i++) {
+                a[i] = data[i]
+            }
+            std::vector<double> bv[input.column];
+            double b[input.column][input.row];
+            for(int i=0; i < input.column; i++) {
+                for(int j=0; j < input.row; j++) {
+                    bv[i].push_back(input.data[j][i])
+                }
+            }
+            for(int i=0; i < input.column; i++) {
+                for(int j=0; j < input.row; j++) {
+                    b[i][j] = bv[i].at(j);
+                }
+            }
+            for(int i=0; i < r.row; i++) {
+                for(int j=0; j < r.column; j++) {
+                    r.data[i][j] = dotProduct(a[i], b[j]);
+                }
+            }
+            return(r);
         }
     private:
         double dotProduct(double x[], double y[]) {
-            if(sizeof(x) != sizeof(y)) return(0);
             double r = 0;
             for(int i=0; i < sizeof(x); i++) {
                 r += x[i] * y[i];
