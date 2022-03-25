@@ -15,6 +15,7 @@ class matrix {
         matrix &transposition();
         matrix &remove(int r[], int c[]);
         matrix &multiply(matrix input);
+        matrix &scalarDiv(double d);
     private:
         double dotProduct(double x[], double y[]);
 };
