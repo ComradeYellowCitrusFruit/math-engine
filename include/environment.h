@@ -10,8 +10,9 @@
 #ifndef MATH_ENVIRONMENT
 #define MATH_ENVIRONMENT
 #include <cmath>
-#include "matrix.h"
+#include "simple.h"
 #include "constants.h"
+#include "matrix.h"
 
 struct vector{
     double distance;
@@ -23,8 +24,16 @@ class vector2D {
         vector y;
 };
 
-// TODO: Take a step into the deepest, darkest, pit of Hell, reserved only for Hitler, Stalin, Mao, Tojo, that one Cambodian asshoole, Satan, and the Anti-Christ (Implement quaternions)
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Enter quaternions.                                                                                   //
+// Since my days as a (wannabe) game dev, I feared quaternions.                                         //
+// They confused me, made my life difficult, made it hell for a young, innocent game dev.               //
+// I thought I left them behind, but here I am, once again face to face with quaternions.               //
+// May God have mercy on my soul.                                                                       //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+class quaternion {
+    
+};
 
 #endif
