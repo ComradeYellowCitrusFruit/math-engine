@@ -1,4 +1,5 @@
 #include "constants.h"
+#include "matrix.h"
 #include <cmath>
 
 class matrix {
@@ -14,7 +15,7 @@ class matrix {
             data = tempData;
             tempData = nullptr;
         }
-        matrix &eval(matrix input, int operation) 
+        matrix &addSub(matrix input, int operation) 
         {
             // Operation codes:
             // Addition: 1
@@ -56,5 +57,49 @@ class matrix {
                 }
             }
             return(m);
+        }
+        matrix &transposition() {
+            matrix t(column, row);
+            for(int i=0; i < column; i++) {
+                for(int j=0; j < row; j++) {
+                    t.data[i][j] = data[j][i]
+                }
+            }
+            return(t);
+        }
+        matrix &remove(int r[], int c[]) {
+            matrix r(row - sizeof(r), column - sizeof(c));
+            int sub[1] = {0, 0};
+            for(int i=0; i < row; i++) {
+                for(int j=0; j < column; j++) {
+                    for(int x; x < sizeof(r); x++) {
+                        for(int y; y < sizeof(c); y++) {
+                            if(i != r[x] && j != c[y]) {
+                                r.data[i - sub[0]][j - sub[1]] = data[i][j]
+                            } else {
+                                if(i == r[x]) {
+                                    sub[0]++
+                                }
+                                if(j == c[y]) {
+                                    sub[1]++
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return(r);
+        }
+        matrix &multiply(matrix input) {
+            
+        }
+    private:
+        double dotProduct(double x[], double y[]) {
+            if(sizeof(x) != sizeof(y)) return(0);
+            double r = 0;
+            for(int i=0; i < sizeof(x); i++) {
+                r += x[i] * y[i];
+            }
+            return(r);
         }
 };
