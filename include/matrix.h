@@ -9,7 +9,12 @@ class matrix {
         int column;
         double data[1][1];
         matrix(int r, int c);
-        matrix &eval(matrix input, int operation);
+        matrix &addSub(matrix input, int operation);
         matrix &scalarMulti(double input);
+        matrix &transposition();
+        matrix &remove(int r[], int c[]);
+        matrix &multiply(matrix input);
+    private:
+        double dotProduct(double x[], double y[]);
 };
 #endif
