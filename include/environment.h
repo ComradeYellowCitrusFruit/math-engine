@@ -3,7 +3,7 @@
 //  This is a header for all of the math relating to positions, and space.                              //
 //  Hence the name, environment.                                                                        //
 //  However, since matices have many, many other applications, they are their own catagory.             //
-//  Things like euler angles, positions, vectors, etc. are centered around space, therefore undeserv... //
+//  Things like quaterninons, positions, vectors, etc. are centered around space, therefore undeserv... //
 //  ...ing of their own catagory.                                                                       //
 //  Anyway, let's get to the code.                                                                      //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -11,6 +11,7 @@
 #define MATH_ENVIRONMENT
 #include <cmath>
 #include "matrix.h"
+#include "constants.h"
 
 struct vector{
     double distance;
