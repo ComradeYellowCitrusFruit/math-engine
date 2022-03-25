@@ -2,6 +2,7 @@
 #define MATH_MATRIX
 
 #include <cmath>
+#include <vector>
 
 class matrix {
     public:
