@@ -17,4 +17,5 @@
 #define EARTH_GRAVITY_P_M 9.832
 #define EARTH_GRAVITY_P_F 32.257218
 #define GOLDEN_RATIO 1.6180339887498948482
+#define NULL nullptr
 #endif
