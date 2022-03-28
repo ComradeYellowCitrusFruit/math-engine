@@ -18,12 +18,14 @@ class vector2D {
     public:
         double x;
         double y;
+        double length();
 };
 class vector3D {
     public:
         double x;
         double y;
         double z;
+        double length();
 };
 class vector4D {
     public:
@@ -31,6 +33,7 @@ class vector4D {
         double x;
         double y;
         double z;
+        double length();
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -42,8 +45,16 @@ class vector4D {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class quaternion {
-    double scalar;
-    vector4D qvector;
+    public:
+        vector4D qw;
+        vector3D q;
+        double w;
+        bool onSphere();
+        void returnToSphere();
+        quaternion &conjugate();
+    private:
+        double norm;
+        double computeNorm();
 };
 
 #endif

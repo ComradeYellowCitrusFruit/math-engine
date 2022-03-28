@@ -19,4 +19,9 @@ class matrix {
     private:
         double dotProduct(double x[], double y[]);
 };
+
+matrix &generateRxMatrix(double x);
+matrix &generateRyMatrix(double x);
+matrix &generateRzMatrix(double x)
+
 #endif
