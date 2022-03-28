@@ -10,9 +10,8 @@ double angleConverter(double x, char RorD) {
         return(0);
     }
 }
-
+// This probably won't be necessary, but just in case
 double temperature(double x, char type, char to) {
-    // This probably won't be necessary, but just in case
     if(type == 'f' || type == 'F') {
         if(to == 'c' || to == 'C') {
             return((x - 32) * 5/9)
@@ -32,4 +31,7 @@ double temperature(double x, char type, char to) {
             return(x - 273.15)
         }
     }
+}
+// This will likely come in handy for the user and if we make our own physics engine
+double distance(double x, char type, char to) {
 }

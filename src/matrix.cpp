@@ -121,8 +121,8 @@ class matrix {
             }
             return(r);
         }
+        // There is no such thing as official matrix division, however that does not matter, this is just the inverse of scalar division
         matrix &scalarDiv(double d) {
-            // There is no such thing as official matrix division, however that does not matter, this is just the inverse of scalar division
             matrix r(row, column);
             for(int i=0; i < row; i++) {
                 for(int j=0; j < column; j++) {

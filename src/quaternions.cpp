@@ -12,5 +12,6 @@
 #include "matrix.h"
 
 class quaternion {
-
-};
+    double scalar;
+    vector4D qvector;
+}

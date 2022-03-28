@@ -3,6 +3,7 @@
 #include "constants.h"
 #include "converters.h"
 
+// Factorial of int x
 int factorial(int x) {
     if(x == 0 || x == 1) {
         return(1);
@@ -14,6 +15,7 @@ int factorial(int x) {
     return(r);
 }
 
+// Factorial but as a double, and excepting a varible for step.
 double factorialWS(double x, double step) {
     if(x == 0) {
         return(1);
@@ -59,4 +61,11 @@ long double overkillPI() {
     long double x = (long double)(log(pow(2*u,6) + 24))
     long double y = (long double)(sqrt(3502))
     return(x/y)
+}
+
+// Why do I keep adding more versions of Pi?
+long double superOverKillPI() {
+    double x = 6 * atan(1/8) + 2 * atan(1/57) + atan(1/239);
+    long double y = 4 * (long double)x;
+    return(y);
 }
