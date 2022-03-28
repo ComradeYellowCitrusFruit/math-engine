@@ -14,15 +14,24 @@
 #include "constants.h"
 #include "matrix.h"
 
-struct vector{
-    double distance;
-    char xyz;
-};
 class vector2D {
     public:
-        vector x;
-        vector y;
+        double x;
+        double y;
 };
+class vector3D {
+    public:
+        double x;
+        double y;
+        double z;
+};
+class vector4D {
+    public:
+        double w;
+        double x;
+        double y;
+        double z;
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Enter quaternions.                                                                                   //
@@ -33,7 +42,8 @@ class vector2D {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class quaternion {
-    
+    double scalar;
+    vector4D qvector;
 };
 
 #endif

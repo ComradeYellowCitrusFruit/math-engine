@@ -10,7 +10,10 @@
 #include "constants.h"
 #include <cmath>
 
+// Factorial of int x
 int factorial(int x);
+// Factorial but as a double, and excepting a varible for step.
+double factorialWS(double x, double step) {
 
 // Does the actual math for the golden ratio, if you need some extra precision
 long double preciseGoldenRatio();
@@ -19,5 +22,6 @@ long double preciseGoldenRatio();
 long double precisePI();
 // Does the actual math for pi with 161 digits of accuracy, by all means beyond over kill but you do you I guess.
 long double overkillPI();
-
+// Why do I keep adding more versions of Pi?
+long double superOverKillPI() {
 #endif
