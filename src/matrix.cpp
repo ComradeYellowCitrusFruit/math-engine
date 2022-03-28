@@ -16,36 +16,38 @@ class matrix {
             data = tempData;
             tempData = nullptr;
         }
-        matrix &addSub(matrix input, int operation) 
-        {
-            // Operation codes:
-            // Addition: 1
-            // Subtraction: 2
-            if(input.column != column) 
+        matrix operator+(const matrix &my) {
+            matrix ret(this.row, this.column)
+            if(this.column != my.column) 
             {
-                matrix self(row, column);
-                self.data = data;
-                return(self);
+                return(this);
             } 
-            else if(input.row != row)
+            else if(this.row != my.row)
             {
-                matrix self(row, column);
-                self.data = data;
-                return(self);
+                return(this);
             }
-            matrix ret(row, column);
-            for(int i = 0; i < row; i++)
+            for(int i = 0; i < this.row; i++)
             {
-                for(int j = 0; j < column; i++) {
-                    if(operation = 1) {
-                        ret.data[i][j] = data[i][j] + input.data[i][j];
-                    } else if(operation = 2) {
-                        ret.data[i][j] = data[i][j] - input.data[i][j];
-                    } else {
-                        matrix self(row, column);
-                        self.data = data;
-                        return(self)
-                    }
+                for(int j = 0; j < my.column; i++) {
+                    ret.data[i][j] = mx.data[i][j] + my.data[i][j];
+                }
+            }
+            return(ret);
+        }
+        matrix operator-(const matrix &my) {
+            matrix ret(this.row, this.column)
+            if(this.column != my.column) 
+            {
+                return(this);
+            } 
+            else if(this.row != my.row)
+            {
+                return(this);
+            }
+            for(int i = 0; i < this.row; i++)
+            {
+                for(int j = 0; j < my.column; i++) {
+                    ret.data[i][j] = mx.data[i][j] - my.data[i][j];
                 }
             }
             return(ret);
@@ -91,7 +93,7 @@ class matrix {
             }
             return(r);
         }
-        matrix &multiply(matrix input) {
+        matrix operator*(const matrix &input) {
             if(column != input.row) {
                 matrix r(row, column);
                 r.data = data
@@ -122,14 +124,65 @@ class matrix {
             return(r);
         }
         // There is no such thing as official matrix division, however that does not matter, this is just the inverse of scalar division
-        matrix &scalarDiv(double d) {
-            matrix r(row, column);
+        matrix operator/(const double &d) {
+            matrix r(this.row, this.column);
             for(int i=0; i < row; i++) {
                 for(int j=0; j < column; j++) {
-                    r.data[i][j] = data[i][j]/d;
+                    r.data[i][j] = this.data[i][j]/d;
                 }
             }
             return(r);
+        }
+        bool operator==(const matrix &m) {
+            if(this.row != m.row) {
+                return(false);
+            } else if (this.column != m.column) {
+                return(false);
+            }
+            for(int i=0; i < this.row; i++) {
+                for(int j=0; j < this.column; j++) {
+                    if(this.data[i][j] != m.data[i][j]) {
+                        return(false);
+                    }
+                }
+            }
+            return(true);
+        }
+        bool operator!=(const matrix &m) {
+            if(this.row != m.row) {
+                return(true);
+            } else if (this.column != m.column) {
+                return(true);
+            }
+            for(int i=0; i < this.row; i++) {
+                for(int j=0; j < this.column; j++) {
+                    if(this.data[i][j] != m.data[i][j]) {
+                        return(true);
+                    }
+                }
+            }
+            return(false);
+        }
+        matrix operator<<(double x) {
+            for(int i=0; i < this.row; i++) {
+                for(int j=0; j < this.column; j++) {
+                    if(this.data[i][j] == NULL || this.data[i][j] == 0) {
+                        this.data[i][j] = x;
+                        return(this);
+                    }
+                }
+            }
+        }
+        double operator>>() {
+            for(int i=this.row; i > 0; i--) {
+                for(int j=this.column; j > 0; j--) {
+                    if(this.data[i][j] != NULL || this.data[i][j] != 0) {
+                        double x = this.data[i][j];
+                        this.data[i][j] = NULL;
+                        return(x);
+                    }
+                }
+            }
         }
     private:
         double dotProduct(double x[], double y[]) {
