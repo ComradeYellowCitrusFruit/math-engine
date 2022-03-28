@@ -140,3 +140,45 @@ class matrix {
             return(r);
         }
 };
+
+matrix &generateRxMatrix(double x) {
+    matrix rx(2,2);
+    rx.data[0][0] = 1;
+    rx.data[1][0] = x;
+    rx.data[2][0] = x;
+    rx.data[0][1] = x;
+    rx.data[0][2] = x;
+    rx.data[1][1] = cos(x);
+    rx.data[1][2] = sin(x);
+    rx.data[2][2] = cos(x);
+    rx.data[2][1] = sin(x) * -1;
+    return(rx);
+}
+
+matrix &generateRyMatrix(double x) {
+    matrix ry(2,2);
+    ry.data[0][0] = cos(x);
+    ry.data[1][0] = x;
+    ry.data[2][0] = sin(x) * -1;
+    ry.data[0][1] = x;
+    ry.data[0][2] = sin(X);
+    ry.data[1][1] = 1;
+    ry.data[2][1] = x;
+    ry.data[2][2] = cos(x);
+    ry.data[1][2] = x;
+    return(ry);
+}
+
+matrix &generateRzMatrix(double x) {
+    matrix rz(2,2);
+    rz.data[0][0] = cos(x);
+    rz.data[1][0] = sin(x);
+    rz.data[2][0] = x;
+    rz.data[0][1] = sin(x) * -1;
+    rz.data[0][2] = x;
+    rz.data[1][1] = cos(x) * -1;
+    rz.data[2][1] = x;
+    rz.data[2][2] = 1;
+    rz.data[1][2] = x;
+    return(rz);
+}
