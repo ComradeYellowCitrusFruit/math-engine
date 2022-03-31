@@ -1,7 +1,7 @@
-#include "simple.h"
+#include "simple.hpp"
 #include <cmath>
-#include "constants.h"
-#include "converters.h"
+#include "constants.hpp"
+#include "converters.hpp"
 
 // Factorial of int x
 int factorial(int x) {
