@@ -14,8 +14,6 @@
 #include <cmath>
 #include <thread>
 #include <mutex>
-// So, when including this within you project, in order to insure that thread ids are done properly replace the following line with whatever file contains the number of threads.
-// #include "core/threads.hpp"
 
 class model {
     public:
@@ -35,8 +33,11 @@ class model {
         void setVerts(vertex newVerts) {
             verts = newVerts;
         }
-        tri getTris();
-        void setTris(tri newTris);
+        tri getTris() {
+            return(tris);
+        }
+        void setTris(tri newTris) {
+        }
         vector3D pos;
         int triCount;
         int vertCount;
@@ -46,9 +47,24 @@ class model {
         double id;
         void updateTris(int threads) {
             std::mutex mtx;
+            if (threads < sizeof(tris[]) / sizeof(tris[0])) {
+                std::thread tri_threads(thr_updateTris, 0, sizeof(tris[]) / sizeof(tris[0], mtx);
+                tri_threads.join();
+            }
         }
         void thr_updateTris(int min, int max, std::mutex mtx) {
             std::lockguard<std::mutex> lg (mtx);
-            
+            for (int i = min; i < max; i++) {
+                for (int j = 0; j < sizeof(tris[]) / sizeof(tris[0]); j++) {
+                    for (int k = 0; k < 3; k++) {
+                        if (tris[j].verts[k].getID() = verts[i].getID()) {
+                            tris[j].verts[k].x = verts[i].x;
+                            tris[j].verts[k].y = verts[i].y;
+                            tris[j].verts[k].z = verts[i].z;
+                            tris[j].averagePos();
+                        }
+                    }
+                }
+            }
         }
 };

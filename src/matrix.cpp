@@ -10,9 +10,9 @@ class matrix {
             row = r;
             column = c;
             double *tempData = new double[row][column];
-            delete[] data;
+            double *temp = data;
             data = tempData;
-            tempData = nullptr;
+            delete[] temp;
         }
         double getData() {
             return(this.data);
@@ -23,7 +23,15 @@ class matrix {
             } else if(clearMatrix = true) {
                 row = r;
                 column = c;
-                data = a;
+                double* tempData = new double[row][column];
+                for (int i = 0; i < row; i++) {
+                    for (int j = 0; j < column; j++) {
+                        tempData[i][j] = a[i][j];
+                    }
+                }
+                double* temp = data;
+                data = tempData;
+                delete[] temp;
             }
         }
         matrix operator+(const matrix &my) {
@@ -223,25 +231,39 @@ class matrix {
             return(r);
         }
         double determinant() {
-            if(row != column) return(NULL);
+            double m = bareissAlgorithm().getData();
+            return(m[row-1][column-1]);
+        }
+        matrix& bareissAlgorithm() {
+            if (row != column) return(NULL);
             double m = getData();
             m[0][0] = 1;
-            for(int k = 1; k < row-1; k++) {
-                for(int i = 0; k+1 < row; i++) {
-                    for(int j = 0; k+1 < row) {
+            for (int k = 1; k < row - 1; k++) {
+                for (int i = 0; k + 1 < row; i++) {
+                    for (int j = 0; k + 1 < row) {
                         double d = m[i][j] * m[k][k] - m[i][k] * m[k][j]; // Ha ha titties ha ha
                         double e = m[k - 1][k - 1];
-                        m[i][j] = d/e;
+                        m[i][j] = d / e;
                     }
                 }
             }
-            return(m[row-1][column-1]);
+            matrix self(row, column);
+            self.setData(m, row, column);
+            return(self);
         }
         matrix operator^(const int &x) {
             if(x < 0) {
-                if(this.determinant() == NULL || this.determinant() == 0) return(this);
-                if(this.row == 2) return(this * 1/this.determinant());
-                this << generateIDMatrix(this.row);
+                if(determinant() == NULL || determinant() == 0) return(this);
+                if(row == 2) return(this * 1/determinant());
+                matrix self(row, column);
+                self.setData(bareissAlgorithm().getData(), row, column);
+                if (row < column) {
+                    self << generateIDMatrix(column);
+                }
+                else {
+                    self << generateIDMatrix(row);
+                }
+                
                 return();
             }
 
