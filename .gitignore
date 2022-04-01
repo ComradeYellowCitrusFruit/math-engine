@@ -31,5 +31,6 @@
 *.out
 *.app
 
-# VS Code shit
+# IDE shit
 .vscode/
+.vs/
