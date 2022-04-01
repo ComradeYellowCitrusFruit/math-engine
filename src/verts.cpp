@@ -5,16 +5,13 @@
 //  Triangles will serve to break down polygons as well                                                 //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Of course positions are involved, this is literally where 3d models are defined
+#include <cmath>
+#include <thread>
 #include "position.hpp"
 #include "constants.hpp"
 #include "converters.hpp"
 #include "matrix.hpp"
 #include "objects.hpp"
-#include <cmath>
-#include <thread>
-// So, when including this within you project, in order to insure that thread ids are done properly replace the following line with whatever file contains the number of threads.
-// #include "core/threads.hpp"
 
 class vertex {
     public:

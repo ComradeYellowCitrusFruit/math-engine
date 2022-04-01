@@ -4,6 +4,10 @@
 #include <cmath>
 #include <vector>
 
+#include "constants.hpp"
+#include "matrix.hpp"
+#include "position.hpp"
+
 class matrix {
     public:
         matrix(int r, int c);

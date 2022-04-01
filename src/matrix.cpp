@@ -1,21 +1,19 @@
+#include <cmath>
+#include <vector>
+#include <src/vectors.cpp>
 #include "constants.hpp"
 #include "matrix.hpp"
 #include "position.hpp"
-#include <cmath>
-#include <vector>
 
 class matrix {
     public:
         matrix(int r, int c) {
             row = r;
             column = c;
-            double *tempData = new double[row][column];
-            double *temp = data;
-            data = tempData;
-            delete[] temp;
+            
         }
         double getData() {
-            return(this.data);
+            return(data);
         }
         void setData(double a[][], int r, int c, bool clearMatrix = false) {
             if(r == row && c == column) {
@@ -414,7 +412,7 @@ matrix &generateRzMatrix(double x) {
 
 matrix &generateIDMatrix(double x) {
     matrix i(x,x);
-    m = i.getData();
+    double m = i.getData();
     for(int j=0; j < x; j++) {
         m[j][j] = 1;
     }

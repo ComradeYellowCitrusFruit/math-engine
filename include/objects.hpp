@@ -6,15 +6,14 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 #ifndef MATH_3D_OBJECTS
 #define MATH_3D_OBJECTS
+#include <cmath>
+#include <thread>
+
 // Of course positions are involved, this is literally where 3d models are defined
 #include "position.hpp"
 #include "constants.hpp"
 #include "converters.hpp"
 #include "matrix.hpp"
-#include <cmath>
-#include <thread>
-// So, when including this within you project, in order to insure that thread ids are done properly replace the following line with whatever file contains the number of threads.
-// #include "core/threads.hpp"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //  So, here we are, vertices, the building blocks of polygons, and therefore 3d models                 //
@@ -67,6 +66,8 @@ class model {
         vertex verts[1];
         tri tris[1];
         double id;
+        void updateTris(int threads);
+        void thr_updateTris(int min, int max, std::mutex mtx);
 };
 
 #endif

@@ -1,5 +1,5 @@
-#include "simple.hpp"
 #include <cmath>
+#include "simple.hpp"
 #include "constants.hpp"
 #include "converters.hpp"
 

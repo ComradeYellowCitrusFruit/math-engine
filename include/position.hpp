@@ -10,6 +10,9 @@
 #ifndef MATH_POSITIONAL
 #define MATH_POSITIONAL
 #include <cmath>
+#include <src/vectors.cpp>
+#include <src/quaternions.cpp>
+#include <array>
 #include "simple.hpp"
 #include "constants.hpp"
 #include "matrix.hpp"
@@ -18,14 +21,18 @@ class vector2D {
     public:
         double x;
         double y;
-        double length();
+        double magnitude();
+        void fromArray(double a[]);
+        std::array<double, 2> toArray();
 };
 class vector3D {
     public:
         double x;
         double y;
         double z;
-        double length();
+        double magnitude();
+        void fromArray(double a[]);
+        std::array<double, 3> toArray();
 };
 class vector4D {
     public:
@@ -33,7 +40,9 @@ class vector4D {
         double x;
         double y;
         double z;
-        double length();
+        double magnitude();
+        void fromArray(double a[]);
+        std::array<double, 4> toArray();
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////

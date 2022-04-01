@@ -1,5 +1,5 @@
-#include "constants.hpp"
 #include <cmath>
+#include "constants.hpp"
 
 double angleConverter(double x, char RorD) {
     if(RorD == 'r' || RorD == 'R') {
@@ -14,21 +14,21 @@ double angleConverter(double x, char RorD) {
 double temperature(double x, char type, char to) {
     if(type == 'f' || type == 'F') {
         if(to == 'c' || to == 'C') {
-            return((x - 32) * 5/9)
+            return((x - 32) * 5 / 9);
         } else if(to == 'k' || to == 'K') {
-            return((x - 32) * 5/9 + 273.15)
+            return((x - 32) * 5 / 9 + 273.15);
         }
     } else if(type == 'c' || type == 'C') {
         if(to == 'f' || to == 'F') {
-            return(x * 9/5 + 32)
+            return(x * 9 / 5 + 32);
         } else if(to == 'k' || to == 'K') {
-            return(x + 273.15)
+            return(x + 273.15);
         }
     } else if(type == 'k' || type == 'K') {
         if(to == 'f' || to == 'F') {
-            return((x - 273.15) * 9/5 + 32)
+            return((x - 273.15) * 9 / 5 + 32);
         } else if(to == 'c' || to == 'c') {
-            return(x - 273.15)
+            return(x - 273.15);
         }
     }
 }

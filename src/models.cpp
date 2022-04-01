@@ -6,14 +6,15 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Of course positions are involved, this is literally where 3d models are defined
+#include <cmath>
+#include <thread>
+#include <mutex>
+
 #include "position.hpp"
 #include "constants.hpp"
 #include "converters.hpp"
 #include "matrix.hpp"
 #include "objects.hpp"
-#include <cmath>
-#include <thread>
-#include <mutex>
 
 class model {
     public:
@@ -50,6 +51,35 @@ class model {
             if (threads < sizeof(tris[]) / sizeof(tris[0])) {
                 std::thread tri_threads(thr_updateTris, 0, sizeof(tris[]) / sizeof(tris[0], mtx);
                 tri_threads.join();
+            }
+            else {
+                int triCount = sizeof(tris[]) / sizeof(tris[0]);
+                std::thread tri_threads[threads + 1];
+                int trisPerThread = triCount / threads;
+                int min = 0;
+                if (triCount % threads != 0) {
+                    int remainderTriMin = triCount - trisPerThread * threads;
+                    for (int i = 0; i <= threads; i++) {
+                        if (i = threads) {
+                            tri_threads[i] = std::thread(thr_updateTris, remainderTriMin, triCount, mtx);
+                        }
+                        else {
+                            int max = trisPerThread * (i + 1);
+                            tri_threads[i] = std::thread(thr_updateTris, min, max, mtx);
+                            min = max;
+                        }
+                    }
+                    for (int i = 0; i <= threads; i++) {
+                        tri_threads[i].join();
+                    }
+                }
+                else {
+                    for (int i = 0; i < threads; i++) {
+                        int max = trisPerThread * (i + 1);
+                        tri_threads[i] = std::thread(thr_updateTris, min, max, mtx);
+                        min = max;
+                    }
+                }
             }
         }
         void thr_updateTris(int min, int max, std::mutex mtx) {

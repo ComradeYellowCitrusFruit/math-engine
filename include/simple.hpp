@@ -7,8 +7,9 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 #ifndef MATH_SIMPLE_FUNCTIONS
 #define MATH_SIMPLE_FUNCTIONS
-#include "constants.hpp"
 #include <cmath>
+#include <src/simple.cpp>
+#include "constants.hpp"
 
 // Factorial of int x
 int factorial(int x);
@@ -23,5 +24,5 @@ long double precisePI();
 // Does the actual math for pi with 161 digits of accuracy, by all means beyond over kill but you do you I guess.
 long double overkillPI();
 // Why do I keep adding more versions of Pi?
-long double superOverKillPI() {
+long double superOverKillPI();
 #endif

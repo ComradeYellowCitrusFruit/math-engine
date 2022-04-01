@@ -1,78 +1,67 @@
 #include <cmath>
+#include <array>
+#include "position.hpp"
 #include "simple.hpp"
 #include "constants.hpp"
-#include "matrix.hpp"
 
-class vector2D {
+class vector2D 
+{
     public:
         double x;
         double y;
-        double toArray() {
-            double r[2] = { x, y };
+        std::array<double, 2> toArray() 
+        {
+            std::array<double, 2> r = { x, y };
             return(r);
         }
-        void fromArray(double a) {
+        void fromArray(double a[]) {
             x = a[0];
             y = a[1];
         }
         double magnitude() {
-            return(sqrt(pow(x,2) + pow(y,2)))
-        }
-        matrix toMatrix() {
-            matrix m(2,1);
-            double arr[2][1] = { { x }, { y } };
-            m.setData(arr, 2, 1);
-            return(m);
+            return(sqrt(pow(x, 2) + pow(y, 2)));
         }
 };
-class vector3D {
+class vector3D 
+{
     public:
         double x;
         double y;
         double z;
-        double toArray() {
-            double r[3] = {x, y, z};
+        std::array<double, 3> toArray() 
+        {
+            std::array<double, 3> r = { x, y, z };
             return(r);
         }
-        void fromArray(double a) {
+        void fromArray(double a[]) {
             x = a[0];
             y = a[1];
             z = a[2];
         }
         double magnitude() {
-            return(sqrt(pow(x,2) + pow(y,2) + pow(z,2)))
-        }
-        matrix toMatrix() {
-            matrix m(3,1);
-            double arr[3][1] = { { x }, { y }, { z } };
-            m.setData(arr, 3, 1);
-            return(m);
+            return(sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2)));
         }
 };
-class vector4D {
+class vector4D 
+{
     public:
         double w;
         double x;
         double y;
         double z;
-        double toArray() {
-            double r[4] = {w, x, y, z};
+        std::array<double, 4> toArray() 
+        {
+            std::array<double, 4> r = { w, x, y, z };
             return(r);
         }
-        void fromArray(double a) {
+        void fromArray(double a[]) {
             w = a[0];
             x = a[1];
             y = a[2];
             z = a[3];
         }
         double magnitude() {
-            return(sqrt(pow(w,2) + pow(x,2) + pow(y,2) + pow(z,2)))
-        }
-        matrix toMatrix() {
-            matrix m(4,1);
-            double arr[4][1] = { { w }, { x }, { y }, { z } };
-            m.setData(arr, 4, 1);
-            return(m);
+            return(sqrt(pow(w, 2) + pow(x, 2) + pow(y, 2) + pow(z, 2)));
         }
 };
 
