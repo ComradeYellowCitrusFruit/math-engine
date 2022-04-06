@@ -8,6 +8,10 @@
 #define MATH_3D_OBJECTS
 #include <cmath>
 #include <thread>
+#include <mutex>
+
+#include <src/vectors.cpp>
+#include <src/quaternions.cpp>
 
 // Of course positions are involved, this is literally where 3d models are defined
 #include "position.hpp"
@@ -58,7 +62,7 @@ class model {
     public:
         model(vertex vertices[], tri triangles[], vector3D pos, double ID);
         vector3D pos;
-        vertex getVerts();
+        std::array<vertex, 3> getVerts();
         void setVerts(vertex newVerts);
         tri getTris();
         void setTris(tri newTris);
